@@ -202,6 +202,8 @@ public:
 
     std::vector<std::unique_ptr<pipeline::semantic_extension::SemanticExtension>> semanticExtensions;
 
+    SymbolRef lookupSymbolWithFlags(SymbolRef owner, NameRef name, u4 flags) const;
+
 private:
     bool shouldReportErrorOn(Loc loc, ErrorClass what) const;
     struct DeepCloneHistoryEntry {
@@ -238,8 +240,6 @@ private:
 
     SymbolRef synthesizeClass(NameRef nameID, u4 superclass = Symbols::todo()._id, bool isModule = false);
     SymbolRef enterSymbol(Loc loc, SymbolRef owner, NameRef name, u4 flags);
-
-    SymbolRef lookupSymbolWithFlags(SymbolRef owner, NameRef name, u4 flags) const;
 
     SymbolRef getTopLevelClassSymbol(NameRef name);
 
